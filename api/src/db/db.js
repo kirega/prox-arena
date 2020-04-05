@@ -37,6 +37,9 @@ User.init(
         userName: {
             type: Sequelize.STRING,
             allowNull: false
+        },
+        HER: {
+            type: Sequelize.INTEGER
         }
     },
     {
