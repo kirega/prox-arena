@@ -1,0 +1,33 @@
+<div fxLayout="row" fxLayoutAlign="end">
+    <button mat-button class="btn-secondary" routerLink="/teams">Back</button>
+</div>
+<div fxLayout="row" fxLayoutAlign="center center">
+    <div>
+        <form [formGroup]="myForm" (ngSubmit)="createTeam()" fxLayout="column" fxLayoutGap="5px" novalidate>
+            <div fxLayout="row" fxLayoutAlign="center space-evenly" fxLayoutGap="5px">
+                <mat-form-field appearance="outline">
+                    <mat-label>Team Name</mat-label>
+                    <input matInput placeholder="Team Name" formControlName='teamName' required>
+                </mat-form-field>
+                <!-- <mat-form-field appearance="outline">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput placeholder="First Name" formControlName='lastName'>
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field> -->
+            </div>
+            <!-- <div fxLayout="row" fxLayoutAlign="center space-evenly"  fxFlex="100"  fxLayoutGap="5px">
+                <mat-form-field appearance="outline">
+                    <mat-label>User Name</mat-label>
+                    <input matInput placeholder="First Name" formControlName='userName'>
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Team</mat-label>
+                    <input matInput placeholder="First Name" formControlName='teamId'>
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+            </div> -->
+            <button mat-button class="btn-primary" type="submit" [disabled]='myForm.status === "INVALID"'> <mat-icon>save</mat-icon>Submit</button>
+        </form>
+    </div>
+</div>

@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.p-5{
+    padding: 3em;
+}
+.px-3{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+button:hover{
+    cursor: pointer;
+}   
+.mat-form-field-appearance-outline .mat-form-field-outline-start{
+    border: 0.5 pt solid black !important;
+}
+.btn-secondary{
+    background-color: #fefeef;
+}
+.btn-primary{
+    background-color: #3d8bd4;
+}
+.mt-5{
+    margin-top: 3rem;
+}
+.f-width{
+    width: 100%;
+}
+.active-route{
+    color: #673ab7;
+}
