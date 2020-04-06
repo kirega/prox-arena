@@ -21,4 +21,7 @@ export class BattleService {
   createTeam(data){
     return this.http.post(`${environment.url}/teams`, data);
   }
+  deleteUser(id){
+    return this.http.delete(`${environment.url}/users/${id}`);
+  }
 }

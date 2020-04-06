@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class TeamListComponent implements OnInit {
   loading = true;
   teams;
-  displayedColumns: string[] = ['teamName', 'totalElos'];
+  displayedColumns: string[] = ['teamName', 'totalElos', 'updatedAt'];
   constructor( private battleService: BattleService, private router: Router) { }
 
   ngOnInit(): void {

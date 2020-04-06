@@ -12,9 +12,23 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     padding-left: 30px;
     padding-right: 30px;
 }
+.mat-toolbar {
+  background-color: #3f51b5;
+  color: #FFFFFF;
+}
+.trash:hover{
+  transition: 200ms;
+  cursor: pointer;
+  color: red;
+}
+button{
+  background-color: #3f51b5 !important;
+  color: #FFFFFF !important;
+}
+
 button:hover{
     cursor: pointer;
-}   
+}
 .mat-form-field-appearance-outline .mat-form-field-outline-start{
     border: 0.5 pt solid black !important;
 }
@@ -31,5 +45,20 @@ button:hover{
     width: 100%;
 }
 .active-route{
-    color: #673ab7;
+    color: #47fd5e;
 }
+.primary-bg {
+  color: #FFFFFF;
+  background-color: #3d8bd4;
+  .mat-button{
+    background-color: #3d8bd4 !important;
+  }
+}
+.warning-bg{
+  color: #FFFFFF;
+  background-color: #d41a26;
+  .mat-button{
+    background-color: #d41a26 !important;
+  }
+}
+

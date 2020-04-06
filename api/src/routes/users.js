@@ -8,5 +8,6 @@ router.get('/', userControler.allUsers);
 
 router.post('/', userControler.createUser);
 
+router.delete('/:id', userControler.deleteUser);
 
 module.exports = router;

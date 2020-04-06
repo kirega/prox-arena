@@ -13,25 +13,40 @@
         <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
       </ng-container>
-  
+
       <!-- Name Column -->
       <ng-container matColumnDef="lastName">
         <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
       </ng-container>
-  
+
       <!-- Weight Column -->
       <ng-container matColumnDef="userName">
         <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.userName}} </mat-cell>
       </ng-container>
-  
+
       <!-- Symbol Column -->
       <ng-container matColumnDef="HER">
         <mat-header-cell *matHeaderCellDef> HER </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.her}} </mat-cell>
       </ng-container>
-  
+      <ng-container matColumnDef="team">
+        <mat-header-cell *matHeaderCellDef> Team </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.team.teamName}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="updatedAt">
+        <mat-header-cell *matHeaderCellDef> Last Updated </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.updatedAt | date: 'yyyy-MM-dd hh:MM:ss'}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+        <mat-cell *matCellDef="let element"> <mat-icon class="trash" (click)="delete(element)">delete</mat-icon> </mat-cell>
+      </ng-container>
+
+
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>

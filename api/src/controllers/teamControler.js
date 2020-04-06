@@ -1,7 +1,9 @@
 var { team } = require('../db/db');
 
 exports.allTeams = (req, res, next) => {
-    team.findAll()
+    team.findAll({
+      order: [['totalElos', 'DESC']]
+    })
         .then(
             (team) => {
                 return res.json(team);

@@ -8,7 +8,7 @@ import { TeamCreateComponent } from './team/team-create/team-create.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'users',
     component: UserListComponent
   },
   {
@@ -22,6 +22,15 @@ const routes: Routes = [
   {
     path: 'team/create',
     component: TeamCreateComponent
+  },
+  {
+    path: '',
+    redirectTo: 'users',
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    component: UserListComponent
   }
 ];
 

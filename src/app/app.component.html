@@ -1,12 +1,12 @@
-<mat-toolbar>
+<mat-toolbar class="mat-elevation-z8">
     <div fxLayout="row" fxLayoutAlign="start space-between" fxLayoutGap="10px" class="f-width px-3">
         <span fxFlex="70">Prox Arena Manager</span>
         <div fxFlex="30"  fxLayoutGap="20px" fxLayoutAlign="end">
-            <span routerLink="/" routerLinkActive="active-route">Users</span>
+            <span routerLink="/users" routerLinkActive="active-route">Users</span>
             <span routerLink="/teams" routerLinkActive="active-route">Teams</span>
         </div>
     </div>
-  
+
 </mat-toolbar>
 <div class="p-5">
     <router-outlet></router-outlet>

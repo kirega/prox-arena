@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BattleService } from 'src/app/battle-service.service';
 import { startWith, map } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component( {
   selector: 'app-create-user',
@@ -14,15 +16,15 @@ export class CreateUserComponent implements OnInit {
   options;
   teamId;
 
-  constructor(private fb: FormBuilder, private http: BattleService) {
+  constructor(private fb: FormBuilder, private http: BattleService, private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
     this.myForm = this.fb.group( {
       firstName: [ '', [ Validators.required ] ],
       lastName: [ '' ],
-      userName: [ '' ],
-      teamId: [ '' ]
+      userName: [ '' , Validators.required ],
+      teamId: [ '' , Validators.required ]
     } );
     // fetch all teams;
     this.http.getAllTeams().subscribe(
@@ -60,7 +62,18 @@ export class CreateUserComponent implements OnInit {
     };
     this.http.createUser(data).subscribe(
       res => {
+        this.snackBar.open('Successfully Created', 'Dismiss', {
+          duration: 2000,
+          panelClass: 'primary-bg'
+        });
+        this.myForm.reset({}, {emitEvent: false});
         console.log( res );
+      },
+      error => {
+        this.snackBar.open('Error Occured, User may already exist', 'Dismiss', {
+          duration: 2000,
+          panelClass: 'warning-bg'
+        });
       }
     );
   }

@@ -1,7 +1,10 @@
-var { user } = require('../db/db');
+var { user, team} = require('../db/db');
 
 exports.allUsers = (req, res, next) => {
-    user.findAll()
+    user.findAll({
+      include: [ {model: team}],
+      order: [['her', 'DESC']]
+    })
         .then(
             (user) => {
                 return res.json(user);
@@ -25,3 +28,15 @@ exports.createUser = async (req, res, next) => {
     }
 
 };
+
+exports.deleteUser = async(req,res,next) => {
+  var userId = req.params.id;
+  try{
+    var response = await user.destroy({where: {id: userId}});
+    res.status(200).json({success: "success"});
+  } catch (e) {
+    res.status(400).json(e);
+  }
+
+
+}

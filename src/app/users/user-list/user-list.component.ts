@@ -11,7 +11,7 @@ import { BattleService } from 'src/app/battle-service.service';
 export class UserListComponent implements OnInit {
   loading = true;
   users;
-  displayedColumns: string[] = ['firstName', 'lastName', 'userName', 'HER'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'userName', 'HER', 'team' , 'updatedAt', 'action'];
 
   constructor(private http: BattleService, private router: Router) { }
 
@@ -31,5 +31,11 @@ export class UserListComponent implements OnInit {
   addUser(){
     this.router.navigate(['/create']);
   }
-
+  delete(row){
+    console.log(row);
+    this.http.deleteUser(row.id).subscribe( res => {
+      console.log(res);
+      this.ngOnInit();
+    });
+  }
 }
