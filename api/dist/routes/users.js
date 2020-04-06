@@ -3,13 +3,12 @@
 var express = require('express');
 
 var router = express.Router();
+
+var userControler = require('../controllers/userControlers');
 /* GET users listing. */
 
-router.get('/', function (req, res, next) {
-  res.json({
-    users: [{
-      name: 'Timmy'
-    }]
-  });
-});
+
+router.get('/', userControler.allUsers);
+router.post('/', userControler.createUser);
+router.delete('/:id', userControler.deleteUser);
 module.exports = router;
