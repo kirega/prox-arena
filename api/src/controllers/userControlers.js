@@ -8,7 +8,7 @@ exports.allUsers = (req, res, next) => {
             }
         )
         .catch(next);
-}
+};
 
 exports.createUser = async (req, res, next) => {
     var { firstName, lastName, userName } = req.body;
@@ -23,4 +23,4 @@ exports.createUser = async (req, res, next) => {
         res.status(400).json({error: "error occured"})
     }
 
-}
+};

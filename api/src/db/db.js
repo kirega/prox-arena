@@ -20,7 +20,7 @@ sequelize
         console.error('Unable to connect to the database:', err);
     });
 
-// models 
+// models
 class User extends Model { }
 
 User.init(
@@ -59,8 +59,7 @@ Team.init(
             unique: true
         },
         totalElos: {
-            type: Sequelize.INTEGER,
-            allowNull: false
+            type: Sequelize.INTEGER
         }
     },
     {

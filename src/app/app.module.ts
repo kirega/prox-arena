@@ -18,6 +18,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { TeamCreateComponent } from './team/team-create/team-create.component';
 import { TeamListComponent } from './team/team-list/team-list.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { TeamListComponent } from './team/team-list/team-list.component';
     MatIconModule,
     MatInputModule,
     MatProgressBarModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

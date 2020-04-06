@@ -5,7 +5,7 @@
   </div>
   <!-- <div fxLayout="row" fxLayoutAlign="space-around"> -->
   <mat-progress-bar mode="query" class="mt-5" *ngIf='loading'></mat-progress-bar>
-  
+
     <div class="mt-5">
       <mat-table [dataSource]="teams" class="mat-elevation-z8" *ngIf="!loading && teams.length > 0">
         <!-- Position Column -->
@@ -13,25 +13,25 @@
           <mat-header-cell *matHeaderCellDef> Team Name </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.teamName}} </mat-cell>
         </ng-container>
-    
+
         <!-- Name Column -->
         <ng-container matColumnDef="totalElos">
-          <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+          <mat-header-cell *matHeaderCellDef> Total Elos</mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.totalElos}} </mat-cell>
         </ng-container>
-    
+
 
         <!-- <ng-container matColumnDef="userName">
           <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.userName}} </mat-cell>
         </ng-container>
-    
+
 
         <ng-container matColumnDef="HER">
           <mat-header-cell *matHeaderCellDef> HER </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.her}} </mat-cell>
         </ng-container> -->
-    
+
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
       </mat-table>
@@ -40,4 +40,3 @@
       <img class="not-found" src="assets/data-not-found.svg">
     </div>
   <!-- </div> -->
-  

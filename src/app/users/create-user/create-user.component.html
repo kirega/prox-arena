@@ -21,7 +21,13 @@
                 </mat-form-field>
                 <mat-form-field appearance="outline">
                     <mat-label>Team</mat-label>
-                    <input matInput placeholder="Team Name" formControlName='teamId'>
+                    <input matInput placeholder="Team Name" formControlName='teamId' [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)"
+                                      [displayWith]="showTeam">
+                        <mat-option *ngFor="let option of filteredOptions" [value]="option.id"  >
+                            {{option.teamName}}
+                        </mat-option>
+                    </mat-autocomplete>
                 </mat-form-field>
             </div>
             <button mat-button class="btn-primary" type="submit" [disabled]='myForm.status === "INVALID"'>
