@@ -11,12 +11,13 @@ exports.allUsers = (req, res, next) => {
 };
 
 exports.createUser = async (req, res, next) => {
-    var { firstName, lastName, userName } = req.body;
+    var { firstName, lastName, userName, teamId } = req.body;
     try {
         var result = await user.create({
             firstName,
             lastName,
-            userName
+            userName,
+            teamId
         });
         res.json(result);
     } catch(e) {

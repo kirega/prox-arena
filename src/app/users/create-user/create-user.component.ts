@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BattleService } from 'src/app/battle-service.service';
-import { startWith } from 'rxjs/operators';
+import { startWith, map } from 'rxjs/operators';
 
 @Component( {
   selector: 'app-create-user',
@@ -12,6 +12,7 @@ export class CreateUserComponent implements OnInit {
   myForm: FormGroup;
   filteredOptions = [];
   options;
+  teamId;
 
   constructor(private fb: FormBuilder, private http: BattleService) {
   }
@@ -31,26 +32,33 @@ export class CreateUserComponent implements OnInit {
       }
     );
     this.myForm.controls['teamId'].valueChanges
-      .pipe( startWith( '' ) )
+      .pipe(
+        startWith( '' ),
+        map( value => typeof value === 'string' ? value : value.teamName )
+      )
       .subscribe( (value: string = '') => {
         const vals = [];
         // this.filteredOptions = this.options;
-        if ( this.options && value.trim().length !== 0) {
+        if ( this.options && value.trim().length !== 0 ) {
           for ( const a of this.options ) {
             if ( a.teamName.toLowerCase().includes( value.toLowerCase().trim() ) ) {
-              vals.push(a);
+              vals.push( a );
             }
           }
           this.filteredOptions = vals;
-        } else{
+        } else {
           this.filteredOptions = this.options;
         }
-      });
+      } );
   }
 
   createUser() {
-    console.log( this.myForm.value );
-    this.http.createUser( this.myForm.value ).subscribe(
+    let data = this.myForm.value;
+    data = {
+      ...data,
+      teamId: this.teamId
+    };
+    this.http.createUser(data).subscribe(
       res => {
         console.log( res );
       }
@@ -58,9 +66,10 @@ export class CreateUserComponent implements OnInit {
   }
 
   selected(team) {
-    console.log( team );
+    this.teamId = team.option.value.id;
   }
-  showTeam(team){
-    return team.teamName;
+
+  showTeam(team): string {
+    return team && team.teamName ? team.teamName : '';
   }
 }

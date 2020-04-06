@@ -24,7 +24,7 @@
                     <input matInput placeholder="Team Name" formControlName='teamId' [matAutocomplete]="auto">
                     <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)"
                                       [displayWith]="showTeam">
-                        <mat-option *ngFor="let option of filteredOptions" [value]="option.id"  >
+                        <mat-option *ngFor="let option of filteredOptions" [value]="option"  >
                             {{option.teamName}}
                         </mat-option>
                     </mat-autocomplete>
