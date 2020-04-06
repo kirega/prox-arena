@@ -28,9 +28,12 @@ app.use('/api/v1/users', users);
 app.use('/api/v1/teams', teams);
 
 // Cronjobs for updating HER
-cron.schedule("2 * * * *", function() {
+cron.schedule("5 * * * * *", function() {
     cronTask.updateUsers();
     console.log("running a task every minute");
   });
-
+cron.schedule("5 * * * * *", function() {
+  cronTask.teamTallies();
+  console.log("running team table update");
+});
 module.exports = app;

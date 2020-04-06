@@ -69,8 +69,8 @@ Team.init(
 );
 
 // Foreign Keys
-Team.hasMany(User);
-User.belongsTo(Team);
+Team.hasMany(User, { foreignKey: { allowNull: false }, onDelete: 'CASCADE'});
+User.belongsTo(Team , { foreignKey: { allowNull: false }, onDelete: 'CASCADE'});
 
 sequelize.sync();
 

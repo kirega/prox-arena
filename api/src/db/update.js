@@ -1,4 +1,4 @@
-var { user } = require('../db/db.js');
+var { user, team } = require('../db/db.js');
 var  superagent = require('superagent');
 const options = {
     method: 'get',
@@ -28,9 +28,9 @@ exports.updateUsers = async () => {
     var results = await user.findAll({
         attributes: ['userName', 'id']
     });
- 
+
     results.filter(async (k) => {
-        // fetch the users 
+        // fetch the users
         var userDetail = await user.findOne({
             where: { id: k.id }
         });
@@ -40,4 +40,21 @@ exports.updateUsers = async () => {
             userDetail.update({ her: highest });
         }, 2000);
     });
-}
+};
+
+exports.teamTallies = async () => {
+  //update all table scores
+
+  try {
+    var allTeams = await team.findAll();
+    allTeams.filter(async(k) => {
+      //fetch all tally from users table
+      var totalHer = await user.sum('her', {where: { teamId: k.id}});
+      console.log(totalHer);
+      k.update({totalElos: totalHer});
+    });
+  } catch (e) {
+    console.log(e);
+    res.status(500).json(e);
+  }
+};
