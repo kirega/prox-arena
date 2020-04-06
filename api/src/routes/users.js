@@ -6,9 +6,7 @@ var userControler =  require('../controllers/userControlers');
 router.get('/', userControler.allUsers);
 
 
-router.post('/', function(req,res,next){
-  res.json("Success");
-});
+router.post('/', userControler.createUser);
 
 
 module.exports = router;

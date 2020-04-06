@@ -12,10 +12,15 @@ exports.allUsers = (req, res, next) => {
 
 exports.createUser = async (req, res, next) => {
     var { firstName, lastName, userName } = req.body;
-    var result = await user.create({
-        firstName,
-        lastName,
-        userName
-    });
-    res.json(result);
+    try {
+        var result = await user.create({
+            firstName,
+            lastName,
+            userName
+        });
+        res.json(result);
+    } catch(e) {
+        res.status(400).json({error: "error occured"})
+    }
+
 }

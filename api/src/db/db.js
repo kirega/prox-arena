@@ -36,9 +36,10 @@ User.init(
         },
         userName: {
             type: Sequelize.STRING,
-            allowNull: false
+            allowNull: false,
+            unique: true
         },
-        HER: {
+        her: {
             type: Sequelize.INTEGER
         }
     },
@@ -54,7 +55,8 @@ Team.init(
     {
         teamName: {
             type: Sequelize.STRING,
-            allowNull: false
+            allowNull: false,
+            unique: true
         },
         totalElos: {
             type: Sequelize.INTEGER,

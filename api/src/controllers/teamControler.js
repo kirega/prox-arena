@@ -8,13 +8,12 @@ exports.allTeams = (req, res, next) => {
             }
         )
         .catch(next);
-}
+};
 
 exports.createTeam = async (req, res, next) => {
     var { teamName, totalElos } = req.body;
     var result = await user.create({
-        teamName,
-        totalElos
+        teamName
     });
     res.json(result);
-}
+};
