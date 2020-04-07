@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  url: 'https://thawing-savannah-90247.herokuapp.com/api/v1'
+  url: 'http://3.133.136.49:3000/api/v1'
 };

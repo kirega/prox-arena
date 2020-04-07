@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node run prod",
     "server": "babel-node ./src/bin/www",
-    "server:prod": "npm run build && NODE_ENV=production node ./dist/app.js",
+    "server:prod": "NODE_ENV=production node ./dist/app.js",
     "dev": "NODE_ENV=development npm run server",
     "clean": "rimraf dist",
     "build": "babel ./src --out-dir dist",
