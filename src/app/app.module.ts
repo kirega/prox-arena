@@ -20,6 +20,8 @@ import { TeamCreateComponent } from './team/team-create/team-create.component';
 import { TeamListComponent } from './team/team-list/team-list.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -46,7 +48,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatProgressBarModule,
     MatToolbarModule,
     MatAutocompleteModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
