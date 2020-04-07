@@ -32,7 +32,7 @@ cron.schedule("* 4 * * *", function() {
     cronTask.updateUsers();
     console.log("running a task every minute");
   });
-cron.schedule("60 * * * * *", function() {
+cron.schedule("59 * * * * *", function() {
   cronTask.teamTallies();
   console.log("running team table update");
 });

@@ -70,7 +70,8 @@ export class CreateUserComponent implements OnInit {
         console.log( res );
       },
       error => {
-        this.snackBar.open('Error Occured, User may already exist', 'Dismiss', {
+        console.log(error);
+        this.snackBar.open(error.error.error, 'Dismiss', {
           duration: 2000,
           panelClass: 'warning-bg'
         });
