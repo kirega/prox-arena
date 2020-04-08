@@ -1,0 +1,21 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+    <div>
+        <h1 class="text-center">Sign Up</h1>
+        <form [formGroup]="myForm" (ngSubmit)="login()" fxLayout="column" novalidate style="width: 300px;">
+            <div>
+                <mat-form-field appearance="outline" style="width: 100%">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Team Name" formControlName='email' type="email" required>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" style="width: 100%">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="First Name" type="password" formControlName='password' required>
+                </mat-form-field>
+            </div>
+            <button mat-button class="btn-primary" type="submit" [disabled]='myForm.status === "INVALID"'>
+                Login</button>
+        </form>
+    </div>
+</div>

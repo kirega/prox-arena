@@ -29,6 +29,10 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
+    path: 'sign-up-admin',
+    component: LoginComponent
+  },
+  {
     path: '',
     redirectTo: 'users',
     pathMatch: 'full'

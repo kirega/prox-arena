@@ -25,6 +25,7 @@ import { environment } from '../environments/environment';
 import { LoginComponent } from './Auth/login/login.component';
 import { AuthDirective } from './directives/auth.directive';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
+import { SignUpComponent } from './Auth/sign-up/sign-up.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { UserRegistrationComponent } from './user-registration/user-registration
     TeamListComponent,
     LoginComponent,
     AuthDirective,
-    UserRegistrationComponent
+    UserRegistrationComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
