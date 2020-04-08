@@ -9,7 +9,7 @@ import { AuthService } from '../auth.service';
 })
 export class AuthComponent implements OnInit {
   myForm: FormGroup;
-
+  loginToggle = true;
   constructor(private fb: FormBuilder, private authService: AuthService) { }
 
   ngOnInit(): void {
