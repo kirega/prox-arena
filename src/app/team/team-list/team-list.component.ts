@@ -21,6 +21,7 @@ export class TeamListComponent implements OnInit {
         this.loading = false;
       },
       err => {
+        this.teams = [];
         this.loading = false;
       }
     );

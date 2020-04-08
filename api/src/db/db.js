@@ -88,7 +88,11 @@ Account.init({
     type: Sequelize.STRING,
     defaultValue: 'ADMIN'
   }
-})
+},
+  {
+    sequelize,
+    modelName: 'Account'
+  })
 
 sequelize.sync();
 

@@ -23,6 +23,7 @@ export class UserListComponent implements OnInit {
       this.loading = false;
     },
     (err) => {
+      this.users = [];
       this.loading = false;
     }
     );

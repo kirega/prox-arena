@@ -1,6 +1,7 @@
 const { account } = require('../db/db');
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
+let jwtSecret =  "my-special-secret";
 
 exports.signUp = async (req, res, next) => {
   let salt = crypto.randomBytes(16).toString('base64');
@@ -24,7 +25,7 @@ exports.isPasswordAndUserMatch = (req, res, next) => {
   })
     .then((user) => {
       if (!user) {
-        res.status(404).send({});
+        res.status(400).send({errors: 'Invalid email or password'});
       } else {
         let passwordFields = user.password.split('$');
         let salt = passwordFields[0];
@@ -32,7 +33,8 @@ exports.isPasswordAndUserMatch = (req, res, next) => {
         if (hash === passwordFields[1]) {
           req.body = {
             id: user.id,
-            email: user.email
+            email: user.email,
+            permission: user.permission
           };
           return next();
         } else {
@@ -42,7 +44,6 @@ exports.isPasswordAndUserMatch = (req, res, next) => {
     });
 };
 exports.login = async (req, res, next) => {
-  let jwtSecret =  "my-special-secret";
   try {
     let refreshId = req.body.userId + jwtSecret;
     let salt = crypto.randomBytes(16).toString('base64');
@@ -56,3 +57,21 @@ exports.login = async (req, res, next) => {
     res.status(500).send({ errors: err });
   }
 }
+
+exports.validJWTNeeded = (req, res, next) => {
+  if (req.headers['authorization']) {
+    try {
+      let authorization = req.headers['authorization'].split(' ');
+      if (authorization[0] !== 'Bearer') {
+        return res.status(401).send();
+      } else {
+        req.jwt = jwt.verify(authorization[1], jwtSecret);
+        return next();
+      }
+    } catch (err) {
+      return res.status(403).send();
+    }
+  } else {
+    return res.status(401).send();
+  }
+};

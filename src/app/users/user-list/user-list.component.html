@@ -1,5 +1,5 @@
 <div fxLayout="row" fxLayoutAlign="end">
-  <button mat-button (click)="addUser()">
+  <button mat-button (click)="addUser()" *appAuth="'ADMIN'">
     <mat-icon>edit</mat-icon>Add User
   </button>
 </div>

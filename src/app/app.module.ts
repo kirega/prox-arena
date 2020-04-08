@@ -22,6 +22,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { AuthComponent } from './Auth/auth/auth.component';
+import { AuthDirective } from './directives/auth.directive';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { environment } from '../environments/environment';
     UserListComponent,
     CreateUserComponent,
     TeamCreateComponent,
-    TeamListComponent
+    TeamListComponent,
+    AuthComponent,
+    AuthDirective
   ],
   imports: [
     BrowserModule,
