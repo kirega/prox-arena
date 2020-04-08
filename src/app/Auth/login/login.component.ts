@@ -4,12 +4,11 @@ import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-auth',
-  templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.scss']
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class AuthComponent implements OnInit {
+export class LoginComponent implements OnInit {
   myForm: FormGroup;
-  loginToggle = true;
   constructor(private fb: FormBuilder, private authService: AuthService) { }
 
   ngOnInit(): void {

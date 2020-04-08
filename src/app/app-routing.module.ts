@@ -4,7 +4,7 @@ import { UserListComponent } from './users/user-list/user-list.component';
 import { CreateUserComponent } from './users/create-user/create-user.component';
 import { TeamListComponent } from './team/team-list/team-list.component';
 import { TeamCreateComponent } from './team/team-create/team-create.component';
-import { AuthComponent } from './Auth/auth/auth.component';
+import { LoginComponent } from './Auth/login/login.component';
 
 
 const routes: Routes = [
@@ -26,7 +26,7 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    component: AuthComponent
+    component: LoginComponent
   },
   {
     path: '',
