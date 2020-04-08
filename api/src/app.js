@@ -10,7 +10,7 @@ var users = require('./routes/users');
 var teams = require('./routes/teams');
 var cronTask = require('./db/update');
 
-var app = express();
+const app = express();
 
 
 app.use((req, res, next) => {

@@ -72,6 +72,24 @@ Team.init(
 Team.hasMany(User, { foreignKey: { allowNull: false }, onDelete: 'CASCADE'});
 User.belongsTo(Team , { foreignKey: { allowNull: false }, onDelete: 'CASCADE'});
 
+class Account extends Model {}
+
+Account.init({
+  email: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true
+  },
+  password: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  permission: {
+    type: Sequelize.STRING,
+    defaultValue: 'ADMIN'
+  }
+})
+
 sequelize.sync();
 
-module.exports = { sequelize, user: User, team: Team };
+module.exports = { sequelize, user: User, team: Team , account: Account};
