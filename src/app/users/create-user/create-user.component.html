@@ -3,8 +3,9 @@
 </div>
 <div fxLayout="row" fxLayoutAlign="center center">
     <div>
-        <form [formGroup]="myForm" (ngSubmit)="createUser()" fxLayout="column" fxLayoutGap="5px" novalidate>
-            <div fxLayout="row" fxLayoutAlign="center space-evenly" fxLayoutGap="5px">
+        <h2 class="text-center">Register a New User</h2>
+        <form [formGroup]="myForm" (ngSubmit)="createUser()" fxLayout="column" fxLayoutGap="5px" novalidate style="width: 300px;">
+            <!-- <div fxLayout="row" fxLayoutAlign="center space-evenly" fxLayoutGap="5px"> -->
                 <mat-form-field appearance="outline">
                     <mat-label>First Name</mat-label>
                     <input matInput placeholder="First Name" formControlName='firstName' required>
@@ -13,8 +14,8 @@
                     <mat-label>Last Name</mat-label>
                     <input matInput placeholder="Last Name" formControlName='lastName'>
                 </mat-form-field>
-            </div>
-            <div fxLayout="row" fxLayoutAlign="center space-evenly" fxFlex="100" fxLayoutGap="5px">
+            <!-- </div> -->
+            <!-- <div fxLayout="row" fxLayoutAlign="center space-evenly" fxFlex="100" fxLayoutGap="5px"> -->
                 <mat-form-field appearance="outline">
                     <mat-label>User Name</mat-label>
                     <input matInput placeholder="User Name" formControlName='userName'>
@@ -29,7 +30,7 @@
                         </mat-option>
                     </mat-autocomplete>
                 </mat-form-field>
-            </div>
+            <!-- </div> -->
             <button mat-button class="btn-primary" type="submit" [disabled]='myForm.status === "INVALID"'>
                 <mat-icon>save</mat-icon>Submit
             </button>
