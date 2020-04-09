@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BattleService } from 'src/app/battle-service.service';
 import { startWith, map } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 
 @Component( {
@@ -16,7 +17,10 @@ export class CreateUserComponent implements OnInit {
   options;
   teamId;
 
-  constructor(private fb: FormBuilder, private http: BattleService, private snackBar: MatSnackBar) {
+  constructor(private fb: FormBuilder,
+              private http: BattleService,
+              private router: Router,
+              private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -71,6 +75,7 @@ export class CreateUserComponent implements OnInit {
         });
         this.myForm.reset({}, {emitEvent: false});
         console.log( res );
+        this.router.navigate(['/users']);
       },
       error => {
         console.log(error);
