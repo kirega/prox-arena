@@ -28,8 +28,8 @@
                         <mat-option *ngFor="let option of filteredOptions" [value]="option"  >
                             {{option.teamName}}
                         </mat-option>
-                        <mat-icon matSuffix>cancel</mat-icon>
                     </mat-autocomplete>
+                    <mat-icon matSuffix (click)="clearTeam()" *ngIf="teamId" class="clear">clear</mat-icon>
                 </mat-form-field>
             <!-- </div> -->
             <button mat-button class="btn-primary" type="submit" [disabled]='myForm.status === "INVALID"'>

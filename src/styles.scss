@@ -32,7 +32,7 @@ body {
   background-color: #3f51b5;
   color: #FFFFFF;
 }
-.trash:hover{
+.trash:hover, .clear:hover{
   transition: 200ms;
   cursor: pointer;
   color: red;

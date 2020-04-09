@@ -39,7 +39,8 @@ exports.createUser = async (req, res, next) => {
     });
     res.json(result);
   } catch (e) {
-    res.status(400).json({ error: "Unable to create user at this time" })
+    console.log(e);
+    res.status(400).json({ error: "Unable to create user at this time, username may already be registered" })
   }
 
 };

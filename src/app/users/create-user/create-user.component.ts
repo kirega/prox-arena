@@ -56,8 +56,10 @@ export class CreateUserComponent implements OnInit {
 
   createUser() {
     let data = this.myForm.value;
+    // const userName = this.data.userName.toLowerCase();
     data = {
       ...data,
+      userName: data.userName.toLowerCase(),
       teamId: this.teamId
     };
     this.http.createUser(data).subscribe(
@@ -85,5 +87,9 @@ export class CreateUserComponent implements OnInit {
 
   showTeam(team): string {
     return team && team.teamName ? team.teamName : '';
+  }
+  clearTeam(){
+    this.myForm.controls['teamId'].patchValue(``);
+    this.teamId = undefined;
   }
 }

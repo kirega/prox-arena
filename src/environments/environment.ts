@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url: 'https://api.proxchesshouse.com/api/v1'
+  url: 'http://localhost:3000/api/v1'
 };
 
 /*
