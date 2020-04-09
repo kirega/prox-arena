@@ -3,7 +3,15 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 
 @media screen and (max-width: 960px) {
   .p-xs-2{
@@ -49,9 +57,9 @@ button:hover{
 .mt-5{
     margin-top: 3rem;
 }
-.f-width{
-    width: 100%;
-}
+// .f-width{
+//     width: 100%;
+// }
 .active-route{
     color: #47fd5e;
 }
