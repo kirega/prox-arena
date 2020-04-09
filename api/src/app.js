@@ -29,7 +29,7 @@ app.use(cookieParser());
 // Routes
 app.use('/api/v1/users', users);
 app.use('/api/v1/teams', teams);
-app.use('/api/v1/login', auth);
+app.use('/api/v1/auth', auth);
 
 // Cronjobs for updating HER
 cron.schedule("* 4 * * *", function() {

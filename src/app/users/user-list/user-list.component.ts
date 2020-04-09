@@ -19,6 +19,8 @@ export class UserListComponent implements OnInit {
     const user = JSON.parse(localStorage.getItem('token'));
     if (!user){
       this.displayedColumns.pop();
+    } else {
+      this.displayedColumns.unshift('phoneNumber');
     }
     this.loading = true;
     this.http.getAllUsers()

@@ -5,6 +5,7 @@ var teamControlers = require('../controllers/teamControler');
 router.get('/', teamControlers.allTeams);
 // router.get('/tally', teamControlers.teamTallies);
 router.post('/', teamControlers.createTeam);
+router.get('/detail/:id', teamControlers.teamDetail);
 
 
 module.exports = router;

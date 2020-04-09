@@ -16,7 +16,6 @@ export class AuthDirective {
     let user;
     if (token) {
       user = jwt_decode(token.accessToken);
-      console.log(user);
       if (roles){
         if (roles === user.permission && !this.show) {
           // show the component

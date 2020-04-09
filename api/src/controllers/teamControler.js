@@ -1,8 +1,8 @@
-var { team } = require('../db/db');
+var { team, user } = require('../db/db');
 
 exports.allTeams = (req, res, next) => {
     team.findAll({
-      order: [['totalElos', 'DESC']]
+        order: [['totalElos', 'DESC']]
     })
         .then(
             (team) => {
@@ -10,6 +10,21 @@ exports.allTeams = (req, res, next) => {
             }
         )
         .catch(next);
+};
+
+exports.teamDetail = async (req, res, next) => {
+  const teamId = req.params.id;
+  try {
+    const result = await user.findAll({
+      where: { teamId },
+      include: [
+        {model: team}
+      ]
+    });
+    res.status(200).json(result);
+  } catch (e) {
+    res.status(400).json(e);
+  }
 };
 
 exports.createTeam = async (req, res, next) => {
@@ -23,7 +38,7 @@ exports.createTeam = async (req, res, next) => {
             totalElos: 0
         });
         res.json(result);
-    } catch(e){
+    } catch (e) {
         // console.log(e);
         res.status(400).json(e);
     }

@@ -14,12 +14,17 @@
                     <mat-label>Last Name</mat-label>
                     <input matInput placeholder="Last Name" formControlName='lastName'>
                 </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Phone Number</mat-label>
+                  <input matInput placeholder="Phone Number" formControlName='phoneNumber' required>
+                </mat-form-field>
             <!-- </div> -->
             <!-- <div fxLayout="row" fxLayoutAlign="center space-evenly" fxFlex="100" fxLayoutGap="5px"> -->
                 <mat-form-field appearance="outline">
                     <mat-label>User Name</mat-label>
                     <input matInput placeholder="User Name" formControlName='userName' required>
                 </mat-form-field>
+
                 <mat-form-field appearance="outline">
                     <mat-label>Team</mat-label>
                     <input matInput placeholder="Team Name" formControlName='teamId' [matAutocomplete]="auto" required>

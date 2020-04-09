@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class TeamListComponent implements OnInit {
   loading = true;
   teams;
+  teamDetail;
   displayedColumns: string[] = ['teamName', 'totalElos', 'updatedAt'];
   constructor( private battleService: BattleService, private router: Router) { }
 
@@ -31,4 +32,13 @@ export class TeamListComponent implements OnInit {
     this.router.navigate(['/team/create']);
   }
 
+  clickableRow(row: any) {
+    console.log(row);
+    this.battleService.getTeamDetails(row.id).subscribe(
+      res => {
+        this.teamDetail = res;
+        console.log(res);
+      }
+    );
+  }
 }

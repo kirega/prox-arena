@@ -24,7 +24,8 @@ export class CreateUserComponent implements OnInit {
       firstName: [ '', [ Validators.required ] ],
       lastName: [ '' ],
       userName: [ '' , Validators.required ],
-      teamId: [ '' , Validators.required ]
+      teamId: [ '' , Validators.required ],
+      phoneNumber: [ '' , Validators.required ]
     } );
     // fetch all teams;
     this.http.getAllTeams().subscribe(

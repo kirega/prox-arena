@@ -3,9 +3,9 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 html, body { height: 100%; }
-body { 
-  margin: 0; 
-  font-family: Roboto, "Helvetica Neue", sans-serif; 
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
   position: relative;
   top: 0;
   bottom: 0;
@@ -92,10 +92,10 @@ button:hover{
   .mat-table caption {
     font-size: 1em;
   }
-  
+
   /*  Enable this to hide header
   .mat-table .mat-header-cell {
-    
+
     border: 10px solid;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -131,11 +131,12 @@ button:hover{
     float: left;
     text-transform: uppercase;
     font-weight: normal;
-    
+
     font-size: .85em;
   }
   .mat-table .mat-cell:last-child {
     border-bottom: 0;
+    padding-right: 0px;
   }
   .mat-table .mat-cell:first-child {
     margin-top: 4%;

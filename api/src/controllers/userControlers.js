@@ -15,7 +15,7 @@ exports.allUsers = (req, res, next) => {
 };
 
 exports.createUser = async (req, res, next) => {
-  var { firstName, lastName, userName, teamId } = req.body;
+  var { firstName, lastName, userName, teamId,phoneNumber } = req.body;
   //Confirm that the userName actually exists and set the her
   var url = `https://lichess.org/@/${userName}/perf/blitz`;
   let userData;
@@ -35,7 +35,8 @@ exports.createUser = async (req, res, next) => {
       lastName,
       userName,
       teamId,
-      her
+      her,
+      phoneNumber
     });
     res.json(result);
   } catch (e) {

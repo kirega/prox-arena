@@ -1,12 +1,12 @@
 <div fxLayout="row" fxLayoutAlign="end">
   <button mat-button (click)="addUser()" >
-    <mat-icon>edit</mat-icon>Register New User
+    <mat-icon>edit</mat-icon>Register New Player
   </button>
 </div>
 <!-- <div fxLayout="row" fxLayoutAlign="space-around"> -->
 <mat-progress-bar mode="query" class="mt-5" *ngIf='loading'></mat-progress-bar>
 
-  <div class="example-container  mat-elevation-z8 mt-5">
+  <div class="table-container mat-elevation-z8 mt-5">
     <mat-table [dataSource]="users"  *ngIf="!loading && users.length > 0">
       <!-- Position Column -->
       <ng-container matColumnDef="firstName">

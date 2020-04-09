@@ -18,6 +18,9 @@ export class BattleService {
   getAllTeams(){
     return this.http.get(`${environment.url}/teams`);
   }
+  getTeamDetails(id){
+    return this.http.get(`${environment.url}/teams/detail/${id}`);
+  }
   createTeam(data){
     return this.http.post(`${environment.url}/teams`, data);
   }
