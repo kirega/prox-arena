@@ -16,6 +16,10 @@ export class UserListComponent implements OnInit {
   constructor(private http: BattleService, private router: Router) { }
 
   ngOnInit(): void {
+    const user = JSON.parse(localStorage.getItem('token'));
+    if (!user){
+      this.displayedColumns.pop();
+    }
     this.loading = true;
     this.http.getAllUsers()
     .subscribe(res => {

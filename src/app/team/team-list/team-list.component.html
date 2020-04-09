@@ -11,19 +11,19 @@
         <!-- Position Column -->
         <ng-container matColumnDef="teamName">
           <mat-header-cell *matHeaderCellDef> Team Name </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.teamName}} </mat-cell>
+          <mat-cell *matCellDef="let element" data-label="Team Name"> {{element.teamName}} </mat-cell>
         </ng-container>
 
         <!-- Name Column -->
         <ng-container matColumnDef="totalElos">
           <mat-header-cell *matHeaderCellDef> Total Elos</mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.totalElos}} </mat-cell>
+          <mat-cell *matCellDef="let element"  data-label="Total Elos"> {{element.totalElos}} </mat-cell>
         </ng-container>
 
 
        <ng-container matColumnDef="updatedAt">
           <mat-header-cell *matHeaderCellDef> Last Updated </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.updatedAt | date: 'yyyy-MM-dd hh:MM:ss'}} </mat-cell>
+          <mat-cell *matCellDef="let element"  data-label="Last Updated"> {{element.updatedAt | date: 'yyyy-MM-dd hh:MM:ss'}} </mat-cell>
         </ng-container>
 
 

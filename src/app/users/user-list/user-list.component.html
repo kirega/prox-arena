@@ -6,44 +6,44 @@
 <!-- <div fxLayout="row" fxLayoutAlign="space-around"> -->
 <mat-progress-bar mode="query" class="mt-5" *ngIf='loading'></mat-progress-bar>
 
-  <div class="mt-5">
-    <mat-table [dataSource]="users" class="mat-elevation-z8" *ngIf="!loading && users.length > 0">
+  <div class="example-container  mat-elevation-z8 mt-5">
+    <mat-table [dataSource]="users"  *ngIf="!loading && users.length > 0">
       <!-- Position Column -->
       <ng-container matColumnDef="firstName">
         <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+        <mat-cell *matCellDef="let element" data-label="First Name"> {{element.firstName}} </mat-cell>
       </ng-container>
 
       <!-- Name Column -->
       <ng-container matColumnDef="lastName">
         <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+        <mat-cell *matCellDef="let element"  data-label="Last Name"> {{element.lastName}} </mat-cell>
       </ng-container>
 
       <!-- Weight Column -->
       <ng-container matColumnDef="userName">
         <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.userName}} </mat-cell>
+        <mat-cell *matCellDef="let element"  data-label="Username"> {{element.userName}} </mat-cell>
       </ng-container>
 
       <!-- Symbol Column -->
       <ng-container matColumnDef="HER">
         <mat-header-cell *matHeaderCellDef> HER </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.her}} </mat-cell>
+        <mat-cell *matCellDef="let element"  data-label="HER"> {{element.her}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="team">
         <mat-header-cell *matHeaderCellDef> Team </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.team.teamName}} </mat-cell>
+        <mat-cell *matCellDef="let element"  data-label="Team"> {{element.team.teamName}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="updatedAt">
         <mat-header-cell *matHeaderCellDef> Last Updated </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.updatedAt | date: 'yyyy-MM-dd hh:MM:ss'}} </mat-cell>
+        <mat-cell *matCellDef="let element"  data-label="Last Updated "> {{element.updatedAt | date: 'yyyy-MM-dd hh:MM:ss'}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="action">
-        <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
-        <mat-cell *matCellDef="let element"> <mat-icon class="trash" (click)="delete(element)">delete</mat-icon> </mat-cell>
+        <mat-header-cell *matHeaderCellDef > Action </mat-header-cell>
+        <mat-cell *matCellDef="let element" > <mat-icon class="trash" (click)="delete(element)" *appAuth='"ADMIN"'>delete</mat-icon> </mat-cell>
       </ng-container>
 
 

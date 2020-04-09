@@ -26,6 +26,7 @@ import { LoginComponent } from './Auth/login/login.component';
 import { AuthDirective } from './directives/auth.directive';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { SignUpComponent } from './Auth/sign-up/sign-up.component';
+import { MatRippleModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { SignUpComponent } from './Auth/sign-up/sign-up.component';
     MatToolbarModule,
     MatAutocompleteModule,
     MatSnackBarModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    MatRippleModule,
+    ServiceWorkerModule.register('custom-sw.js', { enabled: environment.production, registrationStrategy: 'registerImmediately' })
   ],
   providers: [],
   bootstrap: [AppComponent]
