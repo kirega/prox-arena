@@ -28,6 +28,11 @@
                 data-label="Last Updated"> {{element.updatedAt | date: 'yyyy-MM-dd hh:MM:ss'}} </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef > Action </mat-header-cell>
+      <mat-cell *matCellDef="let element" > <mat-icon class="trash" (click)="delete(element)" *appAuth='"ADMIN"'>delete</mat-icon> </mat-cell>
+    </ng-container>
+
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"  (click)="clickableRow(row)"></mat-row>
   </mat-table>

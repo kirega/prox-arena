@@ -27,4 +27,7 @@ export class BattleService {
   deleteUser(id){
     return this.http.delete(`${environment.url}/users/${id}`);
   }
+  deleteTeam(id){
+    return this.http.delete(`${environment.url}/teams/${id}`);
+  }
 }

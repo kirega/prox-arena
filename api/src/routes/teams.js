@@ -6,6 +6,7 @@ router.get('/', teamControlers.allTeams);
 // router.get('/tally', teamControlers.teamTallies);
 router.post('/', teamControlers.createTeam);
 router.get('/detail/:id', teamControlers.teamDetail);
+router.delete('/:id', teamControlers.deleteTeam);
 
 
 module.exports = router;

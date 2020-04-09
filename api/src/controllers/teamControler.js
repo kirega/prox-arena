@@ -26,6 +26,17 @@ exports.teamDetail = async (req, res, next) => {
     res.status(400).json(e);
   }
 };
+exports.deleteTeam = async (req, res, next) => {
+  const teamId = req.params.id;
+  try {
+    const result = await team.destroy({
+      where: { id: teamId },
+    });
+    res.status(200).json({ success: "Successfully deleted team" });
+  } catch (e) {
+    res.status(400).json(e);
+  }
+};
 
 exports.createTeam = async (req, res, next) => {
     // console.log(req.body);
