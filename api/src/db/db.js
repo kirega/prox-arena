@@ -46,6 +46,9 @@ User.init(
           type: Sequelize.STRING,
           allowNull: false,
         },
+        paymentStatus: {
+            type: Sequelize.BOOLEAN
+        }
     },
     {
         sequelize,
@@ -98,6 +101,6 @@ Account.init({
     modelName: 'Account'
   })
 
-sequelize.sync();
+// sequelize.sync();
 
 module.exports = { sequelize, user: User, team: Team , account: Account};

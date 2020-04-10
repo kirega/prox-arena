@@ -5,6 +5,7 @@ import { CreateUserComponent } from './users/create-user/create-user.component';
 import { TeamListComponent } from './team/team-list/team-list.component';
 import { TeamCreateComponent } from './team/team-create/team-create.component';
 import { LoginComponent } from './Auth/login/login.component';
+import { SignUpComponent } from './Auth/sign-up/sign-up.component';
 
 
 const routes: Routes = [
@@ -30,7 +31,7 @@ const routes: Routes = [
   },
   {
     path: 'sign-up-admin',
-    component: LoginComponent
+    component: SignUpComponent
   },
   {
     path: '',
