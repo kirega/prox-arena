@@ -55,4 +55,15 @@ exports.deleteUser = async (req, res, next) => {
     res.status(400).json(e);
   }
 
-}
+};
+
+exports.updatePayment = async(req, res, next) => {
+  var userId = req.params.id;
+  try {
+    var userInstance = await User.findOne({ where: { id: userId } });
+    userInstance.update({paymentStatus: !userInstance.paymentStatus});
+    res.status(200).json({ success: "success" });
+  } catch (e) {
+    res.status(400).json(e);
+  }
+};

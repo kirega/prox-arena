@@ -30,4 +30,7 @@ export class BattleService {
   deleteTeam(id){
     return this.http.delete(`${environment.url}/teams/${id}`);
   }
+  updatePayment(id){
+    return this.http.put(`${environment.url}/users/updatePayment/${id}`, {});
+  }
 }

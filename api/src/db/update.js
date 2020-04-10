@@ -1,4 +1,4 @@
-var { user, team } = require('../../models/index');
+var { User, team } = require('../../models/index');
 var  superagent = require('superagent');
 const options = {
     method: 'get',
@@ -25,13 +25,13 @@ async function getUserData(userName) {
 
 exports.updateUsers = async () => {
     // Updates the users scores;
-    var results = await user.findAll({
+    var results = await User.findAll({
         attributes: ['userName', 'id']
     });
 
     results.filter(async (k) => {
         // fetch the users
-        var userDetail = await user.findOne({
+        var userDetail = await User.findOne({
             where: { id: k.id }
         });
         setTimeout(async () => {
@@ -49,7 +49,7 @@ exports.teamTallies = async () => {
     var allTeams = await team.findAll();
     allTeams.filter(async(k) => {
       //fetch all tally from users table
-      var totalHer = await user.sum('her', {where: { teamId: k.id}});
+      var totalHer = await User.sum('her', {where: { teamId: k.id}});
       console.log(totalHer);
       k.update({totalElos: totalHer});
     });

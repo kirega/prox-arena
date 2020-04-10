@@ -31,6 +31,12 @@
         <mat-header-cell *matHeaderCellDef> HER </mat-header-cell>
         <mat-cell *matCellDef="let element"  data-label="HER"> {{element.her}} </mat-cell>
       </ng-container>
+      
+      <ng-container matColumnDef="paymentStatus">
+        <mat-header-cell *matHeaderCellDef> Payment Status </mat-header-cell>
+        <mat-cell *matCellDef="let element"  data-label="HER"> {{element.paymentStatus? 'paid':'not paid'}} </mat-cell>
+      </ng-container>
+
       <ng-container matColumnDef="phoneNumber">
         <mat-header-cell *matHeaderCellDef> Phone Number </mat-header-cell>
         <mat-cell *matCellDef="let element"  data-label="Phone Number"> {{element.phoneNumber}} </mat-cell>
@@ -47,7 +53,10 @@
 
       <ng-container matColumnDef="action">
         <mat-header-cell *matHeaderCellDef > Action </mat-header-cell>
-        <mat-cell *matCellDef="let element" > <mat-icon class="trash" (click)="delete(element)" *appAuth='"ADMIN"'>delete</mat-icon> </mat-cell>
+        <mat-cell *matCellDef="let element" > 
+          <mat-icon class="trash" (click)="delete(element)" *appAuth='"ADMIN"'>delete</mat-icon> 
+          <mat-icon [class]="element.paymentStatus ? 'update-sucess': 'update-none'" (click)="paymentStatus(element)" *appAuth='"ADMIN"'>attach_money</mat-icon> 
+        </mat-cell>
       </ng-container>
 
 

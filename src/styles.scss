@@ -37,6 +37,23 @@ body {
   cursor: pointer;
   color: red;
 }
+.update-sucess{
+  color: green;
+}
+.update-none{
+  color: black;
+}
+.update-sucess:hover{
+  transition: 200ms;
+  cursor: pointer;
+  color: black;
+}
+.update-none:hover{
+  transition: 200ms;
+  cursor: pointer;
+  color: green;
+}
+
 button{
   background-color: #3f51b5 !important;
   color: #FFFFFF !important;
