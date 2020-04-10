@@ -1,4 +1,4 @@
-const { account } = require('../db/db');
+var { Account } = require('../../models/index');
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 let jwtSecret =  "my-special-secret";
@@ -10,7 +10,7 @@ exports.signUp = async (req, res, next) => {
     .digest("base64");
   req.body.password = salt + "$" + hash;
   try {
-    const accountDetails = await account.create(req.body);
+    const accountDetails = await Account.create(req.body);
     res.json(accountDetails)
   } catch (e) {
     // console.log(e);
@@ -18,7 +18,7 @@ exports.signUp = async (req, res, next) => {
   }
 }
 exports.isPasswordAndUserMatch = (req, res, next) => {
-  account.findOne({
+  Account.findOne({
     where: {
       email: req.body.email
     }

@@ -1,4 +1,4 @@
-var { user, team } = require('../db/db.js');
+var { user, team } = require('../../models/index');
 var  superagent = require('superagent');
 const options = {
     method: 'get',

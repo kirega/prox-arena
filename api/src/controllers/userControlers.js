@@ -1,8 +1,8 @@
-var { user, team } = require('../db/db');
+var { User, team } = require('../../models/index');
 const superagent = require('superagent');
 
 exports.allUsers = (req, res, next) => {
-  user.findAll({
+  User.findAll({
     include: [ { model: team } ],
     order: [ [ 'her', 'DESC' ] ]
   })
@@ -30,7 +30,7 @@ exports.createUser = async (req, res, next) => {
   }
   const her = userData.stat.highest.int;
   try {
-    var result = await user.create({
+    var result = await User.create({
       firstName,
       lastName,
       userName,
@@ -54,6 +54,5 @@ exports.deleteUser = async (req, res, next) => {
   } catch (e) {
     res.status(400).json(e);
   }
-
 
 }

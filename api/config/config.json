@@ -4,23 +4,20 @@
     "password": null,
     "storage": "./dev_db",
     "host": "127.0.0.1",
-    "dialect": "sqlite",
-    "operatorsAliases": false
+    "dialect": "sqlite"
   },
   "test": {
     "username": null,
     "password": null,
     "storage": "./test_db",
     "host": "127.0.0.1",
-    "dialect": "sqlite",
-    "operatorsAliases": false
+    "dialect": "sqlite"
   },
   "production": {
     "username": null,
     "password": null,
     "storage": "./prod_db",
     "host": "127.0.0.1",
-    "dialect": "sqlite",
-    "operatorsAliases": false
+    "dialect": "sqlite"
   }
 }

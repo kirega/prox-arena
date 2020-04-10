@@ -1,5 +1,4 @@
-var { team, user } = require('../db/db');
-
+var { User, team } = require('../../models/index');
 exports.allTeams = (req, res, next) => {
     team.findAll({
         order: [['totalElos', 'DESC']]
@@ -15,7 +14,7 @@ exports.allTeams = (req, res, next) => {
 exports.teamDetail = async (req, res, next) => {
   const teamId = req.params.id;
   try {
-    const result = await user.findAll({
+    const result = await User.findAll({
       where: { teamId },
       include: [
         {model: team}
