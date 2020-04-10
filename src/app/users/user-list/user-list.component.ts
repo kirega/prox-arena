@@ -12,7 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class UserListComponent implements OnInit {
   loading = true;
   users;
-  displayedColumns: string[] = ['firstName', 'lastName', 'userName', 'HER', 'team' ,'updatedAt', 'action'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'userName', 'HER', 'team' , 'updatedAt', 'action'];
 
   constructor(
     private http: BattleService, 
@@ -56,6 +56,7 @@ export class UserListComponent implements OnInit {
         duration: 2000,
         panelClass: 'primary-bg'
       });
+      this.ngOnInit();
     });
   }
 }

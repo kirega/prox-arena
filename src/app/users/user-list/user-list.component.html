@@ -34,7 +34,7 @@
       
       <ng-container matColumnDef="paymentStatus">
         <mat-header-cell *matHeaderCellDef> Payment Status </mat-header-cell>
-        <mat-cell *matCellDef="let element"  data-label="HER"> {{element.paymentStatus? 'paid':'not paid'}} </mat-cell>
+        <mat-cell *matCellDef="let element"  data-label="HER"> {{element.paymentStatus? 'Paid':'Not Paid'}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="phoneNumber">
@@ -54,8 +54,8 @@
       <ng-container matColumnDef="action">
         <mat-header-cell *matHeaderCellDef > Action </mat-header-cell>
         <mat-cell *matCellDef="let element" > 
-          <mat-icon class="trash" (click)="delete(element)" *appAuth='"ADMIN"'>delete</mat-icon> 
-          <mat-icon [class]="element.paymentStatus ? 'update-sucess': 'update-none'" (click)="paymentStatus(element)" *appAuth='"ADMIN"'>attach_money</mat-icon> 
+          <mat-icon class="trash" (click)="delete(element)">delete</mat-icon> 
+          <mat-icon [class]="element.paymentStatus ? 'update-sucess': 'update-none'" (click)="paymentStatus(element)" >attach_money</mat-icon> 
         </mat-cell>
       </ng-container>
 
