@@ -23,9 +23,6 @@ module.exports = {
       phoneNumber: {
         type: Sequelize.STRING
       },
-      paymentStatus: {
-        type: Sequelize.BOOLEAN
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -2,7 +2,7 @@
   "development": {
     "username": null,
     "password": null,
-    "storage": "./dev_db",
+    "storage": "./team-battles",
     "host": "127.0.0.1",
     "dialect": "sqlite"
   },
@@ -16,7 +16,7 @@
   "production": {
     "username": null,
     "password": null,
-    "storage": "./prod_db",
+    "storage": "./team-battles",
     "host": "127.0.0.1",
     "dialect": "sqlite"
   }

@@ -21,7 +21,7 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       }
-    );
+      );
 
   },
 
@@ -36,6 +36,11 @@ module.exports = {
     return queryInterface.removeColumn(
       'Users', // name of Source model
       'teamId' // key we want to remove
-    );
+    ).then(() => {
+      return queryInterface.removeColumn(
+        'Users',
+        'paymentStatus'
+      );
+    });
   }
 };
