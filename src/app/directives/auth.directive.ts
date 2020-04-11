@@ -28,8 +28,8 @@ export class AuthDirective {
       }
     }
     else {
-      this.viewContainer.createEmbeddedView(this.templateRef);
-      this.show = true;
+      this.viewContainer.clear();
+      this.show = false;
     }
   }
   // Check if the current user has the correct access rights needed for that action

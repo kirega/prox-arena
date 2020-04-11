@@ -22,14 +22,14 @@ export class EventsListComponent implements OnInit {
     private http: BattleService,
     private snackBar: MatSnackBar,
     private router: Router) {
-    // const user = JSON.parse(localStorage.getItem('token'));
-    // if (!user) {
-    //   this.displayedColumns.pop();
-    // } else {
-    //   this.displayedColumns.splice(3, 0, 'phoneNumber');
-    //   this.displayedColumns.splice(7, 0, 'paymentStatus');
-    //   // this.displayedColumns.unshift('#');
-    // }
+    const user = JSON.parse(localStorage.getItem('token'));
+    if (!user) {
+      this.displayedColumns.pop();
+    } else {
+      // this.displayedColumns.splice(3, 0, 'phoneNumber');
+      // this.displayedColumns.splice(7, 0, 'paymentStatus');
+      // this.displayedColumns.unshift('#');
+    }
   }
 
   ngOnInit(): void {

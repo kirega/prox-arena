@@ -25,7 +25,16 @@ export class EventResultsListComponent implements OnInit {
     private route: ActivatedRoute,
     private dialog: MatDialog,
     private snackBar: MatSnackBar
-  ) { }
+  ) { 
+    const user = JSON.parse(localStorage.getItem('token'));
+    if (!user) {
+      this.displayedColumns.pop();
+    } else {
+      // this.displayedColumns.splice(3, 0, 'phoneNumber');
+      // this.displayedColumns.splice(7, 0, 'paymentStatus');
+      // this.displayedColumns.unshift('#');
+    }
+  }
 
   ngOnInit(): void {
     this.loading = true;

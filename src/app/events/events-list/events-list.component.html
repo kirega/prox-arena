@@ -31,7 +31,7 @@
         <ng-container matColumnDef="action">
           <mat-header-cell *matHeaderCellDef > Action </mat-header-cell>
           <mat-cell *matCellDef="let element" > 
-            <mat-icon class="trash" (click)="delete(element)">delete</mat-icon> 
+            <mat-icon class="trash" (click)="delete(element)" *appAuth="'ADMIN'">delete</mat-icon> 
           </mat-cell>
         </ng-container>
   
