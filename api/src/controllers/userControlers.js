@@ -1,9 +1,9 @@
-var { User, team } = require('../../models/index');
+var { User, team, EventResult } = require('../../models/index');
 const superagent = require('superagent');
 
 exports.allUsers = (req, res, next) => {
   User.findAll({
-    include: [ { model: team } ],
+    include: [ { model: team } , {model: EventResult}],
     order: [ [ 'her', 'DESC' ] ]
   })
     .then(

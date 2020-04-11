@@ -1,6 +1,9 @@
-<div fxLayout="row" fxLayoutAlign="end">
+<div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="5px">
   <button mat-button (click)="addUser()" >
-    <mat-icon>edit</mat-icon>Register New Player
+    <mat-icon class="mr-1">edit</mat-icon>Register New Player
+  </button>
+  <button mat-button (click)="export()" >
+    <mat-icon class="mr-1">cloud_download</mat-icon>Export
   </button>
 </div>
 <!-- <div fxLayout="row" fxLayoutAlign="space-around"> -->
