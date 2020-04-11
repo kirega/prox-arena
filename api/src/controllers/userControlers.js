@@ -3,8 +3,10 @@ const superagent = require('superagent');
 
 exports.allUsers = (req, res, next) => {
   User.findAll({
-    include: [ { model: team } , {model: EventResult}],
-    order: [ [ 'her', 'DESC' ] ]
+    include: [
+      { model: team },
+      { model: EventResult }],
+    order: [['her', 'DESC']]
   })
     .then(
       (user) => {
@@ -15,7 +17,7 @@ exports.allUsers = (req, res, next) => {
 };
 
 exports.createUser = async (req, res, next) => {
-  var { firstName, lastName, userName, teamId,phoneNumber } = req.body;
+  var { firstName, lastName, userName, teamId, phoneNumber } = req.body;
   //Confirm that the userName actually exists and set the her
   var url = `https://lichess.org/@/${userName}/perf/blitz`;
   let userData;
@@ -57,11 +59,11 @@ exports.deleteUser = async (req, res, next) => {
 
 };
 
-exports.updatePayment = async(req, res, next) => {
+exports.updatePayment = async (req, res, next) => {
   var userId = req.params.id;
   try {
     var userInstance = await User.findOne({ where: { id: userId } });
-    userInstance.update({paymentStatus: !userInstance.paymentStatus});
+    userInstance.update({ paymentStatus: !userInstance.paymentStatus });
     res.status(200).json({ success: "success" });
   } catch (e) {
     res.status(400).json(e);

@@ -1,0 +1,48 @@
+<div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="5px">
+    <button mat-button (click)="addEvent()" >
+      <mat-icon class="mr-1">add</mat-icon>New Event
+    </button>
+    <button mat-button>
+      <mat-icon class="mr-1">cloud_download</mat-icon> Export
+    </button>
+  </div>
+  <!-- <div fxLayout="row" fxLayoutAlign="space-around"> -->
+  <mat-progress-bar mode="query" class="mt-5" *ngIf='loading'></mat-progress-bar>
+  
+    <div class="table-container mat-elevation-z8 mt-5" *ngIf="!loading && events.data.length > 0">
+      <mat-table [dataSource]="events"   matSort>
+        <!-- Position Column -->
+        <ng-container matColumnDef="#">
+          <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+          <mat-cell *matCellDef="let element; let i=index" data-label="#"> {{i + 1}} </mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell *matCellDef="let element" data-label="Name"> {{element.name}} </mat-cell>
+        </ng-container>
+  
+        <!-- Name Column -->
+        <ng-container matColumnDef="dateOfEvent">
+          <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+          <mat-cell *matCellDef="let element"  data-label="Date"> {{element.dateOfEvent || 'NOT SET'}} </mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef > Action </mat-header-cell>
+          <mat-cell *matCellDef="let element" > 
+            <mat-icon class="trash" (click)="delete(element)">delete</mat-icon> 
+          </mat-cell>
+        </ng-container>
+  
+  
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" (click)='showDetail(row)'></mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+    </div>
+    <div  fxLayout="row" fxLayoutAlign="center center" *ngIf="!loading && events.data.length <= 0">
+      <img class="not-found" src="assets/data-not-found.svg">
+    </div>
+  <!-- </div> -->
+  

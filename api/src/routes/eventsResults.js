@@ -3,10 +3,11 @@ var router = express.Router();
 var eventResultsControler =  require('../controllers/eventResultsControler');
 
 /* GET users listing. */
-// router.get('/', eventResultsControler.all);
-router.put('/updatePayment/:id', userControler.updatePayment);
+router.get('/:eventId', eventResultsControler.resultsPerEvent);
+router.get('/', eventResultsControler.allEventsResults);
+router.put('/update', eventResultsControler.updateEventResult);
 
-router.put('/update', eventResultsControler.updateEvent);
+router.post('/', eventResultsControler.createEventResult);
 
 router.delete('/:userId/:eventId', eventResultsControler.deleteEventResult);
 

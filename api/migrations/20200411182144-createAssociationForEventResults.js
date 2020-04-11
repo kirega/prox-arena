@@ -11,7 +11,7 @@ module.exports = {
     */
     return queryInterface.addColumn(
       'EventResults',
-      'userId',
+      'UserId',
       {
         type: Sequelize.INTEGER,
         references: {
@@ -24,7 +24,7 @@ module.exports = {
     ).then(() => {
       return queryInterface.addColumn(
         'EventResults',
-        'eventId',
+        'EventId',
         {
           type: Sequelize.INTEGER,
           references: {
@@ -49,11 +49,11 @@ module.exports = {
     */
     return queryInterface.removeColumn(
       'EventResults',
-      'userId'
+      'UserId'
     ).then(() => {
       return queryInterface.removeColumn(
         'EventResults',
-        'eventId'
+        'EventId'
       );
     });
   }

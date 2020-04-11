@@ -64,6 +64,7 @@
         <mat-cell *matCellDef="let element" > 
           <mat-icon class="trash" (click)="delete(element)">delete</mat-icon> 
           <mat-icon [class]="element.paymentStatus ? 'update-sucess': 'update-none'" (click)="paymentStatus(element)" >attach_money</mat-icon> 
+          <mat-icon (click)="addResults(element)" >add</mat-icon> 
         </mat-cell>
       </ng-container>
 

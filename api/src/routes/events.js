@@ -5,7 +5,7 @@ var eventControler =  require('../controllers/eventControler');
 /* GET users listing. */
 router.get('/', eventControler.allEvents);
 router.post('/', eventControler.createEvent);
-router.put('/updatePayment/:id', eventControler.updatePayment);
+// router.put('/updatePayment/:id', eventControler.updatePayment);
 
 router.put('/update', eventControler.updateEvent);
 

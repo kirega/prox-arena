@@ -9,6 +9,8 @@ const morgan = require('morgan');
 // in app imports
 var users = require('./routes/users');
 var teams = require('./routes/teams');
+var events = require('./routes/events');
+var eventResults = require('./routes/eventsResults');
 var auth = require('./routes/auth');
 var cronTask = require('./db/update');
 
@@ -29,8 +31,8 @@ app.use(cookieParser());
 // Routes
 app.use('/api/v1/users', users);
 app.use('/api/v1/teams', teams);
-app.use('/api/v1/events', teams);
-app.use('/api/v1/results', teams);
+app.use('/api/v1/events', events);
+app.use('/api/v1/results', eventResults);
 app.use('/api/v1/auth', auth);
 
 // Cronjobs for updating HER

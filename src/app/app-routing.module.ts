@@ -6,6 +6,8 @@ import { TeamListComponent } from './team/team-list/team-list.component';
 import { TeamCreateComponent } from './team/team-create/team-create.component';
 import { LoginComponent } from './Auth/login/login.component';
 import { SignUpComponent } from './Auth/sign-up/sign-up.component';
+import { EventsListComponent } from './events/events-list/events-list.component';
+import { EventCreateComponent } from './events/event-create/event-create.component';
 
 
 const routes: Routes = [
@@ -32,6 +34,14 @@ const routes: Routes = [
   {
     path: 'sign-up-admin',
     component: SignUpComponent
+  },
+  {
+    path: 'events',
+    component: EventsListComponent
+  },
+  {
+    path: 'event/create',
+    component: EventCreateComponent
   },
   {
     path: '',

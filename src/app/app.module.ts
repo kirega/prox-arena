@@ -29,6 +29,10 @@ import { SignUpComponent } from './Auth/sign-up/sign-up.component';
 import { MatRippleModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import {MatDialogModule} from '@angular/material/dialog';
+import { EventResultsComponent } from './event-results/event-results.component';
+import { EventsListComponent } from './events/events-list/events-list.component';
+import { EventCreateComponent } from './events/event-create/event-create.component';
 
 
 @NgModule({
@@ -41,7 +45,10 @@ import { MatSortModule } from '@angular/material/sort';
     LoginComponent,
     AuthDirective,
     UserRegistrationComponent,
-    SignUpComponent
+    SignUpComponent,
+    EventResultsComponent,
+    EventsListComponent,
+    EventCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +70,7 @@ import { MatSortModule } from '@angular/material/sort';
     MatPaginatorModule,
     MatSortModule,
     MatRippleModule,
+    MatDialogModule,
     ServiceWorkerModule.register('custom-sw.js', { enabled: environment.production, registrationStrategy: 'registerImmediately' })
   ],
   providers: [],

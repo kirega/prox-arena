@@ -6,6 +6,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { EventCreateComponent } from 'src/app/events/event-create/event-create.component';
+import { EventResultsComponent } from 'src/app/event-results/event-results.component';
 
 @Component({
   selector: 'app-user-list',
@@ -22,6 +25,7 @@ export class UserListComponent implements OnInit {
   constructor(
     private http: BattleService,
     private snackBar: MatSnackBar,
+    public dialog: MatDialog,
     private router: Router) {
     const user = JSON.parse(localStorage.getItem('token'));
     if (!user) {
@@ -66,6 +70,16 @@ export class UserListComponent implements OnInit {
         panelClass: 'primary-bg'
       });
       this.ngOnInit();
+    });
+  }
+
+  addResults(element){
+    const dialogRef = this.dialog.open(EventResultsComponent, {
+      width: '400px',
+      data: element
+    });
+    dialogRef.afterClosed().subscribe( result => {
+      console.log('done');
     });
   }
   export(){

@@ -1,0 +1,31 @@
+<!-- MODAL FOR ADDING THE USERS RESULTS FOR AN INVENT -->
+
+<div fxLayout="row" fxLayoutAlign="center center">
+    <div>
+        <h2 class="text-center">Update Results</h2>
+        <h4 class="text-center">{{sharedData.firstName}} {{sharedData.lastName}}</h4>
+        <form [formGroup]="myForm" (ngSubmit)="createResult()" fxLayout="column" fxLayoutGap="5px" novalidate style="width: 300px;">
+            <!-- <div fxLayout="row" fxLayoutAlign="center space-evenly" fxLayoutGap="5px"> -->
+                <mat-form-field appearance="outline">
+                    <mat-label>Event</mat-label>
+                    <input matInput placeholder="Event" formControlName='eventId' [matAutocomplete]="auto" required>
+                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)"
+                                      [displayWith]="showEvent">
+                        <mat-option *ngFor="let option of eventFilteredOptions" [value]="option"  >
+                            {{option.name}}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <mat-icon matSuffix (click)="clearEvent()" *ngIf="eventId" class="clear">clear</mat-icon>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Result</mat-label>
+                    <input matInput placeholder="Result" formControlName='result' required>
+                </mat-form-field>
+        
+  
+            <button mat-button class="btn-primary" type="submit" [disabled]='myForm.status === "INVALID"'>
+                <mat-icon>save</mat-icon>Submit
+            </button>
+        </form>
+    </div>
+</div>

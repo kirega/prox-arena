@@ -21,8 +21,21 @@ export class BattleService {
   getTeamDetails(id){
     return this.http.get(`${environment.url}/teams/detail/${id}`);
   }
+  getAllEvents(){
+    return this.http.get(`${environment.url}/events`);
+  }
+  getAllEventResults(id){
+    console.log(id);
+    return this.http.get(`${environment.url}/results/${id}`);
+  }
   createTeam(data){
     return this.http.post(`${environment.url}/teams`, data);
+  }
+  createEvent(data){
+    return this.http.post(`${environment.url}/events`, data);
+  }
+  createEventResult(data){
+    return this.http.post(`${environment.url}/results`, data);
   }
   deleteUser(id){
     return this.http.delete(`${environment.url}/users/${id}`);

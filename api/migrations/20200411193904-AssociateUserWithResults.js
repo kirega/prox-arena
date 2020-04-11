@@ -11,7 +11,7 @@ module.exports = {
     */
     return queryInterface.addColumn(
       'Users',
-      'eventResultsId',
+      'EventResultsId',
       {
         type: Sequelize.INTEGER,
         references: {
@@ -34,7 +34,7 @@ module.exports = {
     */
     return queryInterface.removeColumn(
       'Users',
-      'eventResultsId'
+      'EventResultsId'
     );
   }
 };
