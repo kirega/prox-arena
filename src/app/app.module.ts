@@ -27,6 +27,8 @@ import { AuthDirective } from './directives/auth.directive';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { SignUpComponent } from './Auth/sign-up/sign-up.component';
 import { MatRippleModule } from '@angular/material/core';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
@@ -58,6 +60,8 @@ import { MatRippleModule } from '@angular/material/core';
     MatToolbarModule,
     MatAutocompleteModule,
     MatSnackBarModule,
+    MatPaginatorModule,
+    MatSortModule,
     MatRippleModule,
     ServiceWorkerModule.register('custom-sw.js', { enabled: environment.production, registrationStrategy: 'registerImmediately' })
   ],

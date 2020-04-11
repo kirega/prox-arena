@@ -7,8 +7,13 @@
 <mat-progress-bar mode="query" class="mt-5" *ngIf='loading'></mat-progress-bar>
 
   <div class="table-container mat-elevation-z8 mt-5">
-    <mat-table [dataSource]="users"  *ngIf="!loading && users.length > 0">
+    <mat-table [dataSource]="users"  *ngIf="!loading && users.data.length > 0" matSort>
       <!-- Position Column -->
+      <ng-container matColumnDef="#">
+        <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+        <mat-cell *matCellDef="let element; let i=index" data-label="#"> {{i + 1}} </mat-cell>
+      </ng-container>
+
       <ng-container matColumnDef="firstName">
         <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
         <mat-cell *matCellDef="let element" data-label="First Name"> {{element.firstName}} </mat-cell>
@@ -22,19 +27,19 @@
 
       <!-- Weight Column -->
       <ng-container matColumnDef="userName">
-        <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Username </mat-header-cell>
         <mat-cell *matCellDef="let element"  data-label="Username"> {{element.userName}} </mat-cell>
       </ng-container>
 
       <!-- Symbol Column -->
-      <ng-container matColumnDef="HER">
-        <mat-header-cell *matHeaderCellDef> HER </mat-header-cell>
+      <ng-container matColumnDef="HER" >
+        <mat-header-cell *matHeaderCellDef mat-sort-header> HER </mat-header-cell>
         <mat-cell *matCellDef="let element"  data-label="HER"> {{element.her}} </mat-cell>
       </ng-container>
       
       <ng-container matColumnDef="paymentStatus">
         <mat-header-cell *matHeaderCellDef> Payment Status </mat-header-cell>
-        <mat-cell *matCellDef="let element"  data-label="HER"> {{element.paymentStatus? 'Paid':'Not Paid'}} </mat-cell>
+        <mat-cell *matCellDef="let element"  data-label="paymentStatus" [ngClass]="element.paymentStatus ? 'text-sucess': 'text-warning'"> {{element.paymentStatus ? 'Paid': 'Not Paid'}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="phoneNumber">
@@ -63,8 +68,9 @@
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
+    <mat-paginator [pageSizeOptions]="[10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
   </div>
-  <div  fxLayout="row" fxLayoutAlign="center center" *ngIf="!loading && users.length <= 0">
+  <div  fxLayout="row" fxLayoutAlign="center center" *ngIf="!loading && users.data.length <= 0">
     <img class="not-found" src="assets/data-not-found.svg">
   </div>
 <!-- </div> -->

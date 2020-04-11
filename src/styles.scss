@@ -27,6 +27,12 @@ body {
       padding-right: 30px;
   }
 }
+.text-sucess{
+  color: green !important;
+}
+.text-warning{
+  color: red !important;
+}
 
 .mat-toolbar {
   background-color: #3f51b5;
@@ -53,11 +59,15 @@ body {
   color: green;
 }
 
-button{
+button.mat-button{
   background-color: #3f51b5 !important;
   color: #FFFFFF !important;
 }
-
+.mat-sort-header-container.mat-sort-header-sorted {
+  button.mat-sort-header-button{
+    background-color: none !important;
+  }
+}
 button:hover{
     cursor: pointer;
 }
@@ -180,4 +190,19 @@ button:hover{
 }
 .nav-item:focus{
   outline: none;
+}
+.update-sucess{
+  color: green;
+}
+.update-none{
+  color: black;
+}
+.update-sucess:hover{
+  transition: 200ms;
+  cursor: pointer;
+  color: black;
+}
+.update-none:hover{
+  cursor: pointer;
+  color: green;
 }
