@@ -55,8 +55,6 @@ export class EventsListComponent implements OnInit {
   }
   showDetail(row){
     console.log(row);
-    this.http.getAllEventResults(row.id).subscribe(
-      res => console.log(res)
-    );
+    this.router.navigate([`/results/${row.id}`]);
   }
 }

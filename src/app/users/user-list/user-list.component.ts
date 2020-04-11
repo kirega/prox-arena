@@ -8,7 +8,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { EventCreateComponent } from 'src/app/events/event-create/event-create.component';
-import { EventResultsComponent } from 'src/app/event-results/event-results.component';
+import { EventResultsComponent } from 'src/app/events/event-results/event-results.component';
 
 @Component({
   selector: 'app-user-list',
@@ -76,7 +76,7 @@ export class UserListComponent implements OnInit {
   addResults(element){
     const dialogRef = this.dialog.open(EventResultsComponent, {
       width: '400px',
-      data: element
+      data: {...element, typeAction: 'create'}
     });
     dialogRef.afterClosed().subscribe( result => {
       console.log('done');

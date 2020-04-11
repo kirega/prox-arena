@@ -1,4 +1,4 @@
-var { EventResult, User } = require('../../models/index');
+var { EventResult, User , Event} = require('../../models/index');
 const superagent = require('superagent');
 
 exports.allEventsResults = (req, res, next) => {
@@ -18,7 +18,7 @@ exports.resultsPerEvent = (req, res, next) => {
   console.log(eventId);
   EventResult.findAll({
     where: { EventId: eventId },
-    include: [{ model: User }],
+    include: [{ model: User }, {model: Event}],
     order: [['result', 'DESC']]
   }).then(event => {
     return res.status(200).json(event);
@@ -70,3 +70,17 @@ exports.updateEventResult = async (req, res, next) => {
     res.status(400).json(e);
   }
 };
+
+exports.autoUpdate = async (req, res, next) => {
+  var {tournamentId, eventId} = req.body;
+  var url = 'https://lichess.org/api/tournament/{id}/results';
+  var tournamentData;
+  try {
+    let res = await superagent
+      .get(url);
+      tournamentData = JSON.parse(res.text);
+  } catch (e) {
+    console.log("error occured", e);
+    res.status(400).json({ error: "UserName does not exist on Lichess" })
+  }
+}

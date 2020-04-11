@@ -8,6 +8,7 @@ import { LoginComponent } from './Auth/login/login.component';
 import { SignUpComponent } from './Auth/sign-up/sign-up.component';
 import { EventsListComponent } from './events/events-list/events-list.component';
 import { EventCreateComponent } from './events/event-create/event-create.component';
+import { EventResultsListComponent } from './events/event-results-list/event-results-list.component';
 
 
 const routes: Routes = [
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: 'event/create',
     component: EventCreateComponent
+  },
+  {
+    path: 'results/:id',
+    component: EventResultsListComponent
   },
   {
     path: '',

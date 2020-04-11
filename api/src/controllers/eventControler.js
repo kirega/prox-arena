@@ -14,12 +14,13 @@ exports.allEvents = (req, res, next) => {
 };
 
 exports.createEvent = async (req, res, next) => {
-  var { name, dateOfEvent } = req.body;
+  var { name, dateOfEvent, tournamentId} = req.body;
   
   try {
     var result = await Event.create({
       name,
-      dateOfEvent
+      dateOfEvent,
+      tournamentId
     });
     res.json(result);
   } catch (e) {

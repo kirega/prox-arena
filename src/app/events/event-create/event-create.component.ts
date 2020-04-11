@@ -22,6 +22,7 @@ export class EventCreateComponent implements OnInit {
     this.myForm = this.fb.group({
       name: ['', [Validators.required]],
       dateOfEvent: [''],
+      tournamentId: ['']
     });
   }
   createEvent() {

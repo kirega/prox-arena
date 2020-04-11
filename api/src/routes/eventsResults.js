@@ -5,6 +5,7 @@ var eventResultsControler =  require('../controllers/eventResultsControler');
 /* GET users listing. */
 router.get('/:eventId', eventResultsControler.resultsPerEvent);
 router.get('/', eventResultsControler.allEventsResults);
+router.post('/autoUpdate', eventResultsControler.autoUpdate);
 router.put('/update', eventResultsControler.updateEventResult);
 
 router.post('/', eventResultsControler.createEventResult);

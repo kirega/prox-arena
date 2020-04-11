@@ -30,9 +30,10 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {MatDialogModule} from '@angular/material/dialog';
-import { EventResultsComponent } from './event-results/event-results.component';
+import { EventResultsComponent } from './events/event-results/event-results.component';
 import { EventsListComponent } from './events/events-list/events-list.component';
 import { EventCreateComponent } from './events/event-create/event-create.component';
+import { EventResultsListComponent } from './events/event-results-list/event-results-list.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { EventCreateComponent } from './events/event-create/event-create.compone
     SignUpComponent,
     EventResultsComponent,
     EventsListComponent,
-    EventCreateComponent
+    EventCreateComponent,
+    EventResultsListComponent
   ],
   imports: [
     BrowserModule,
