@@ -1,5 +1,5 @@
 var { User, team } = require('../../models/index');
-var  superagent = require('superagent');
+var superagent = require('superagent');
 const options = {
     method: 'get',
     url: "https://lichess.org/@/kirega/perf/blitz",
@@ -14,12 +14,12 @@ async function getUserData(userName) {
     var userData;
     try {
         var res = await superagent
-        .get(url)
-        .set('accept','application/vnd.lichess.v2+json');
+            .get(url)
+            .set('accept', 'application/vnd.lichess.v2+json');
         userData = JSON.parse(res.text);
         return userData;
-    } catch(e) {
-        console.log("error occured");
+    } catch (e) {
+        console.log("error occured", e);
     }
 }
 
@@ -43,18 +43,18 @@ exports.updateUsers = async () => {
 };
 
 exports.teamTallies = async () => {
-  //update all table scores
+    //update all table scores
 
-  try {
-    var allTeams = await team.findAll();
-    allTeams.filter(async(k) => {
-      //fetch all tally from users table
-      var totalHer = await User.sum('her', {where: { teamId: k.id}});
-      console.log(totalHer);
-      k.update({totalElos: totalHer});
-    });
-  } catch (e) {
-    console.log(e);
-    res.status(500).json(e);
-  }
+    try {
+        var allTeams = await team.findAll();
+        allTeams.filter(async (k) => {
+            //fetch all tally from users table
+            var totalHer = await User.sum('her', { where: { teamId: k.id } });
+            console.log(totalHer);
+            k.update({ totalElos: totalHer });
+        });
+    } catch (e) {
+        console.log(e);
+        res.status(500).json(e);
+    }
 };

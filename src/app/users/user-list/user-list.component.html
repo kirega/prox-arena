@@ -2,9 +2,12 @@
   <button mat-button (click)="addUser()" >
     <mat-icon class="mr-1">edit</mat-icon>Register New Player
   </button>
-  <button mat-button (click)="export()" >
+  <button mat-button (click)="export()" *appAuth="'ADMIN'">
     <mat-icon class="mr-1">cloud_download</mat-icon>Export
   </button>
+  <!-- <button mat-button (click)="sync()" *appAuth="'ADMIN'">
+    <mat-icon class="mr-1">sync</mat-icon>Sync HER
+  </button> -->
 </div>
 <!-- <div fxLayout="row" fxLayoutAlign="space-around"> -->
 <mat-progress-bar mode="query" class="mt-5" *ngIf='loading'></mat-progress-bar>

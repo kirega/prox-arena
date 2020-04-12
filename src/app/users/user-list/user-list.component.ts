@@ -85,4 +85,14 @@ export class UserListComponent implements OnInit {
   export(){
 
   }
+  sync(){
+    this.http.manualHERUpdate().subscribe(
+      res => {
+        this.snackBar.open('Successfully Updated HER for all users', 'Dismiss', {
+          duration: 2000,
+          panelClass: 'primary-bg'
+        });
+      }
+    );
+  }
 }

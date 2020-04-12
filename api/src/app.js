@@ -36,7 +36,7 @@ app.use('/api/v1/results', eventResults);
 app.use('/api/v1/auth', auth);
 
 // Cronjobs for updating HER
-cron.schedule("* 4 * * *", function() {
+cron.schedule("* 4 * * * *", function() {
     cronTask.updateUsers();
     console.log("running a task every minute");
   });

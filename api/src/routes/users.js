@@ -4,6 +4,7 @@ var userControler =  require('../controllers/userControlers');
 
 /* GET users listing. */
 router.get('/', userControler.allUsers);
+router.get('/herUpdate', userControler.updateHER);
 router.put('/updatePayment/:id', userControler.updatePayment);
 
 router.post('/', userControler.createUser);

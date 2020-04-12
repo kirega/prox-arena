@@ -1,4 +1,5 @@
 var { User, team, EventResult } = require('../../models/index');
+const cronTask = require('../db/update');
 const superagent = require('superagent');
 
 exports.allUsers = (req, res, next) => {
@@ -51,7 +52,7 @@ exports.createUser = async (req, res, next) => {
 exports.deleteUser = async (req, res, next) => {
   var userId = req.params.id;
   try {
-    var response = await user.destroy({ where: { id: userId } });
+    var response = await User.destroy({ where: { id: userId } });
     res.status(200).json({ success: "success" });
   } catch (e) {
     res.status(400).json(e);
@@ -69,3 +70,12 @@ exports.updatePayment = async (req, res, next) => {
     res.status(400).json(e);
   }
 };
+exports.updateHER = async(req,res, next) => {
+  try{
+    await cronTask.updateUser();
+    // await cronTask.teamTallies();
+    res.status(200).json({success: 'Updated'});
+  } catch (e) {
+    res.status(500).json(e);
+  }
+}

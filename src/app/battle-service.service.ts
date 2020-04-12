@@ -52,5 +52,7 @@ export class BattleService {
   updateResults(data){
     return this.http.put(`${environment.url}/results/update`, data);
   }
-  
+  manualHERUpdate(){
+    return this.http.get(`${environment.url}/users/herUpdate`);
+  }
 }
