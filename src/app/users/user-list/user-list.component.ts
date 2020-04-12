@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BattleService } from 'src/app/battle-service.service';
@@ -13,18 +13,20 @@ import { EventResultsComponent } from 'src/app/events/event-results/event-result
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.scss']
+  styleUrls: ['./user-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserListComponent implements OnInit {
   loading = true;
   users;
-  displayedColumns: string[] = ['#', 'firstName', 'lastName', 'userName', 'HER', 'team', 'updatedAt', 'action'];
+  displayedColumns: string[] = ['#', 'firstName', 'lastName', 'userName', 'HER', 'aggregated', 'team', 'updatedAt', 'action'];
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
   constructor(
     private http: BattleService,
     private snackBar: MatSnackBar,
+    private cd: ChangeDetectorRef,
     public dialog: MatDialog,
     private router: Router) {
     const user = JSON.parse(localStorage.getItem('token'));
@@ -45,8 +47,10 @@ export class UserListComponent implements OnInit {
         this.users.sort = this.sort;
         this.users.paginator = this.paginator;
         this.loading = false;
+        this.cd.detectChanges();
       },
         (err) => {
+          this.users = new MatTableDataSource([]);
           this.users.data = [];
           this.loading = false;
         }
@@ -56,6 +60,7 @@ export class UserListComponent implements OnInit {
   addUser() {
     this.router.navigate(['/create']);
   }
+
   delete(row) {
     console.log(row);
     this.http.deleteUser(row.id).subscribe(res => {
@@ -72,7 +77,11 @@ export class UserListComponent implements OnInit {
       this.ngOnInit();
     });
   }
-
+  // aggregated(EventResult){
+  //    const res = EventResult.reduce((acc, v) => acc + v.result, 0);
+  //    console.log(res);
+  //    return res;
+  // }
   addResults(element){
     const dialogRef = this.dialog.open(EventResultsComponent, {
       width: '400px',
@@ -81,6 +90,7 @@ export class UserListComponent implements OnInit {
     dialogRef.afterClosed().subscribe( result => {
       console.log('done');
     });
+    this.ngOnInit();
   }
   export(){
 

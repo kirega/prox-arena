@@ -12,8 +12,8 @@
 <!-- <div fxLayout="row" fxLayoutAlign="space-around"> -->
 <mat-progress-bar mode="query" class="mt-5" *ngIf='loading'></mat-progress-bar>
 
-  <div class="table-container mat-elevation-z8 mt-5">
-    <mat-table [dataSource]="users"  *ngIf="!loading && users.data.length > 0" matSort>
+  <div class="table-container mat-elevation-z8 mt-5"  *ngIf="!loading && users.data.length > 0" >
+    <mat-table [dataSource]="users" matSort>
       <!-- Position Column -->
       <ng-container matColumnDef="#">
         <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
@@ -55,6 +55,11 @@
       <ng-container matColumnDef="team">
         <mat-header-cell *matHeaderCellDef> Team </mat-header-cell>
         <mat-cell *matCellDef="let element"  data-label="Team"> {{element.team.teamName}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="aggregated">
+        <mat-header-cell *matHeaderCellDef> Total Score </mat-header-cell>
+        <mat-cell *matCellDef="let element"  data-label="Total Score"> {{element.aggregated}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="updatedAt">

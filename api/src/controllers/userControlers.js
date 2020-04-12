@@ -11,7 +11,26 @@ exports.allUsers = (req, res, next) => {
   })
     .then(
       (user) => {
-        return res.json(user);
+        // console.log(user);
+        // const updatedUsers = user.map(record => {
+        //   console.log(record.dataValues);
+        //   return {
+        //     ...record,
+        //     aggregated:  record.EventResults.length > 0 ? record.EventResults.reduce((acc,value)=> acc + value.result, 0) : 0
+        //   };
+        // });
+        let userUpdate = JSON.stringify(user);
+        // console.log(k);
+
+        userUpdate = JSON.parse(userUpdate);
+        userUpdate = userUpdate.map( record => {
+             return {
+                ...record,
+                aggregated:  record.EventResults.length > 0 ? record.EventResults.reduce((acc,value)=> acc + value.result, 0) : 0
+              };
+        });
+        // console.log(user);
+        return res.json(userUpdate);
       }
     )
     .catch(next);
