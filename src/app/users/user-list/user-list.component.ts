@@ -19,7 +19,7 @@ import { EventResultsComponent } from 'src/app/events/event-results/event-result
 export class UserListComponent implements OnInit {
   loading = true;
   users;
-  displayedColumns: string[] = ['#', 'firstName', 'lastName', 'userName', 'HER', 'aggregated', 'team', 'updatedAt', 'action'];
+  displayedColumns: string[] = ['#', 'firstName', 'lastName', 'userName', 'her', 'aggregated', 'team', 'updatedAt', 'action'];
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 

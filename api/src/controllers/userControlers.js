@@ -23,14 +23,14 @@ exports.allUsers = (req, res, next) => {
         // console.log(k);
 
         userUpdate = JSON.parse(userUpdate);
-        userUpdate = userUpdate.map( record => {
-             return {
-                ...record,
-                aggregated:  record.EventResults.length > 0 ? record.EventResults.reduce((acc,value)=> acc + value.result, 0) : 0
-              };
+        userUpdate = userUpdate.map(record => {
+          return {
+            ...record,
+            aggregated: record.EventResults.length > 0 ? record.EventResults.reduce((acc, value) => acc + value.result, 0) : 0
+          };
         });
         // console.log(user);
-        return res.json(userUpdate);
+        return res.json(userUpdate.sort((a, b) => (a.aggregated < b.aggregated) ? 1 : -1));
       }
     )
     .catch(next);
@@ -89,11 +89,11 @@ exports.updatePayment = async (req, res, next) => {
     res.status(400).json(e);
   }
 };
-exports.updateHER = async(req,res, next) => {
-  try{
+exports.updateHER = async (req, res, next) => {
+  try {
     await cronTask.updateUser();
     // await cronTask.teamTallies();
-    res.status(200).json({success: 'Updated'});
+    res.status(200).json({ success: 'Updated' });
   } catch (e) {
     res.status(500).json(e);
   }

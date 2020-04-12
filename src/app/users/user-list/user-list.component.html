@@ -38,9 +38,9 @@
       </ng-container>
 
       <!-- Symbol Column -->
-      <ng-container matColumnDef="HER" >
+      <ng-container matColumnDef="her" >
         <mat-header-cell *matHeaderCellDef mat-sort-header> HER </mat-header-cell>
-        <mat-cell *matCellDef="let element"  data-label="HER"> {{element.her}} </mat-cell>
+        <mat-cell *matCellDef="let row"  data-label="HER"> {{row.her}} </mat-cell>
       </ng-container>
       
       <ng-container matColumnDef="paymentStatus">
@@ -58,7 +58,7 @@
       </ng-container>
 
       <ng-container matColumnDef="aggregated">
-        <mat-header-cell *matHeaderCellDef> Total Score </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Total Score </mat-header-cell>
         <mat-cell *matCellDef="let element"  data-label="Total Score"> {{element.aggregated}} </mat-cell>
       </ng-container>
 
@@ -80,7 +80,7 @@
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
-    <mat-paginator [pageSizeOptions]="[10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[10, 20, 50, 100]"  showFirstLastButtons></mat-paginator>
   </div>
   <div  fxLayout="row" fxLayoutAlign="center center" *ngIf="!loading && users.data.length <= 0">
     <img class="not-found" src="assets/data-not-found.svg">
