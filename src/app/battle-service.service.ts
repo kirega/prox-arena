@@ -55,4 +55,12 @@ export class BattleService {
   manualHERUpdate(){
     return this.http.get(`${environment.url}/users/herUpdate`);
   }
+  exportData(path){
+    return this.http.get(`${environment.url}${path}`, {
+      headers: {
+        'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+      },
+      responseType: 'blob'
+    });
+  }
 }

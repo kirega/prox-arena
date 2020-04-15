@@ -1,13 +1,14 @@
 var { User, team, EventResult } = require('../../models/index');
 const cronTask = require('../db/update');
 const superagent = require('superagent');
+const ExcelJs = require('exceljs');
 
 exports.allUsers = (req, res, next) => {
   User.findAll({
     include: [
       { model: team },
-      { model: EventResult }],
-    order: [['her', 'DESC']]
+      { model: EventResult } ],
+    order: [ [ 'her', 'DESC' ] ]
   })
     .then(
       (user) => {
@@ -39,7 +40,7 @@ exports.allUsers = (req, res, next) => {
 exports.createUser = async (req, res, next) => {
   var { firstName, lastName, userName, teamId, phoneNumber } = req.body;
   //Confirm that the userName actually exists and set the her
-  var url = `https://lichess.org/@/${userName}/perf/blitz`;
+  var url = `https://lichess.org/@/${ userName }/perf/blitz`;
   let userData;
   try {
     let res = await superagent
@@ -97,4 +98,59 @@ exports.updateHER = async (req, res, next) => {
   } catch (e) {
     res.status(500).json(e);
   }
+}
+
+exports.downloadExcel = async (req, res, next) => {
+  const wk = new ExcelJs.Workbook({});
+  const sheet = wk.addWorksheet('User', {
+    pageSetup: { paperSize: 9, orientation: 'landscape' }
+  });
+  const userData = await User.findAll({
+    include: [
+      { model: team },
+      { model: EventResult } ],
+    order: [ [ 'her', 'DESC' ] ]
+  });
+  let userUpdate = JSON.stringify(userData);
+
+  userUpdate = JSON.parse(userUpdate);
+  let columns = [
+      { header: 'First Name', key: 'firstName' },
+      { header: 'Last Name', key: 'lastName' },
+      { header: 'User Name', key: 'userName' },
+      { header: 'H.E.R', key: 'her' },
+      { header: 'Phone Number', key: 'phoneNumber' },
+      { header: 'Payment Status', key: 'paymentStatus' },
+      { header: 'Results', key: 'results' },
+      { header: 'Team', key: 'team' }
+  ];
+
+  sheet.columns = columns;
+  userUpdate = userUpdate.map(record => {
+    return {
+      ...record,
+      aggregated: record.EventResults.length > 0 ? record.EventResults.reduce((acc, value) => acc + value.result, 0) : 0
+    };
+  });
+  let rows = []
+  userUpdate.map((value) => {
+    rows.push({
+      firstName: value.firstName,
+      lastName: value.lastName,
+      userName: value.userName,
+      her: value.her,
+      phoneNumber: value.phoneNumber,
+      paymentStatus: value.paymentStatus ? 'Paid': 'Unpaid',
+      results: value.aggregated,
+      team: value.team.teamName
+    });
+  });
+  sheet.addRows(rows);
+  const buffer = await wk.xlsx.writeBuffer();
+  res.writeHead(200, {
+    'Content-Disposition': 'attachment; filename="user.xlsx"',
+    'Transfer-Encoding': 'chunked',
+    'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+  });
+  res.end(buffer,'binary');
 }

@@ -9,7 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { EventCreateComponent } from 'src/app/events/event-create/event-create.component';
 import { EventResultsComponent } from 'src/app/events/event-results/event-results.component';
-
+import { saveAs } from 'file-saver';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -93,7 +93,12 @@ export class UserListComponent implements OnInit {
     this.ngOnInit();
   }
   export(){
-
+    this.http.exportData('/users/export').subscribe(
+      (data: any) => {
+        const b = new Blob([data], {type: 'blob'} );
+        saveAs(b, 'Users.xlsx');
+      }
+    );
   }
   sync(){
     this.http.manualHERUpdate().subscribe(
