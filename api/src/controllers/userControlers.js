@@ -39,6 +39,9 @@ exports.allUsers = (req, res, next) => {
 
 exports.createUser = async (req, res, next) => {
   var { firstName, lastName, userName, teamId, phoneNumber } = req.body;
+  if(!teamId){
+    res.status(400).json({error: "Team Does not exist"});
+  }
   //Confirm that the userName actually exists and set the her
   var url = `https://lichess.org/@/${ userName }/perf/blitz`;
   let userData;
